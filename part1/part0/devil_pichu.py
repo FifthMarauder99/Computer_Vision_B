@@ -53,7 +53,7 @@ if __name__ == '__main__':
     # server (unless you set up an X Window server or remote desktop) and may not
     # work by default on your local machine. But you may want to try uncommenting it,
     # as seeing results in real-time can be very useful for debugging!
-    # color_im.show()
+    #    color_im.show()
 
     # Save the image
     color_im.save("output.png")
