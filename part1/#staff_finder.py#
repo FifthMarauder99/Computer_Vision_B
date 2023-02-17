@@ -1,0 +1,64 @@
+from PIL import Image, ImageFilter, ImageDraw, ImageColor
+import numpy as np
+import math
+
+# Load the image and convert to grayscale
+img = Image.open('sample-input.png')
+gray = img.convert('L')
+
+# Detect edges using Canny edge detector
+edges = gray.filter(ImageFilter.FIND_EDGES)
+edges_arr = np.array(edges)
+
+
+# Define the Hough space
+h, w = edges_arr.shape
+max_rho = int(math.ceil(math.sqrt(h**2 + w**2)))
+theta_res = math.pi/180
+rho_res = 1
+accumulator = np.zeros((int(2 * max_rho // rho_res), int(180 // theta_res)))
+
+# Loop over all edge points
+edge_pixels = edges.load()
+for x in range(w):
+    for y in range(h):
+        if edge_pixels[x, y] == 255:
+        # Loop over all possible angles in range of -45 to 45 degrees
+            for theta_idx in range(80, 180, 24):
+                theta = (theta_idx - 90) * theta_res
+                rho = x * math.cos(theta) + y * math.sin(theta)
+                rho_idx = int(round(rho / rho_res)) + int(max_rho // rho_res)
+                accumulator[rho_idx, theta_idx] += 1
+            
+                # Find the peaks in the Hough space
+                                                                                                        n_lines = 5
+                                                                                                        peaks = []
+                                                                                                        for i in range(n_lines):
+                                                                                                                rho_idx, theta_idx = np.unravel_index(np.argmax(accumulator), accumulator.shape)
+                                                                                                                    rho = (rho_idx - int(max_rho // rho_res)) * rho_res
+                                                                                                                        theta = (theta_idx - 90) * theta_res
+                                                                                                                            peaks.append((rho, theta))
+
+                                                                                                                                # Zero-out the surrounding cells in the accumulator to avoid overlapping lines
+                                                                                                                                    for j in range(-10, 11):
+                                                                                                                                                for k in range(-10, 11):
+                                                                                                                                                                if rho_idx+j >= 0 and rho_idx+j < accumulator.shape[0] and theta_idx+k >= 0 and theta_idx+k < accumulator.shape[1]:
+                                                                                                                                                                                    accumulator[rho_idx+j, theta_idx+k] = 0
+
+                                                                                                                                                                                    # Draw the detected lines on the original image
+                                                                                                                                                                                    draw = ImageDraw.Draw(img.convert('RGB'))
+                                                                                                                                                                                    for rho, theta in peaks:
+                                                                                                                                                                                            a = np.cos(theta)
+                                                                                                                                                                                                b = np.sin(theta)
+                                                                                                                                                                                                    x0 = a * rho
+                                                                                                                                                                                                        y0 = b * rho
+                                                                                                                                                                                                            x1 = int(x0 + 1000*(-b))
+                                                                                                                                                                                                                y1 = int(y0 + 1000*(a))
+                                                                                                                                                                                                                    x2 = int(x0 - 1000*(-b))
+                                                                                                                                                                                                                        y2 = int(y0 - 1000*(a))
+                                                                                                                                                                                                                        #     color = (255, 0, 0)
+                                                                                                                                                                                                                            draw.line((x1, y1, x2, y2), fill=(255,0,0), width=2)
+
+                                                                                                                                                                                                                            # Show the original image with detected lines
+                                                                                                                                                                                                                            img.show()
+                                                                                                                                                                                                                            
