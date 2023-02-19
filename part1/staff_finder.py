@@ -40,12 +40,12 @@ def hough_transform(image):
     return accumulator, dist_max, theta_step, rho_step
                 
 
-def detect_hough_lines(image, n_lines=5):
+def detect_hough_lines(image, num_lines=5):
     accumulator, dist_max, theta_step, rho_step = hough_transform(image)
     
     # Locate the peaks in the Hough space
     peaks = []
-    for i in range(n_lines):
+    for i in range(num_lines):
         rho_index, theta_index = np.unravel_index(np.argmax(accumulator), accumulator.shape)
         rho = (rho_index - int(dist_max // rho_step)) * rho_step
         theta = (theta_index - 90) * theta_step
