@@ -1,3 +1,12 @@
+# Title : Image processing in spatial and frequency spaces
+# Authors:
+#   Davyn Hartono - dbharton
+#   Atharva Pore - apore
+#   Sravya Vujjini - svujjin
+#   Sanjana Jairam - sjairam
+
+
+
 from PIL import Image
 from PIL import ImageFilter
 import sys
