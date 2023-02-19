@@ -12,6 +12,9 @@ from PIL import ImageFilter
 import sys
 
 
+#### Used this as a reference : https://coderzcolumn.com/tutorials/python/image-filtering-in-python-using-pillow 
+
+
 if __name__ == '__main__':
 
     if(len(sys.argv) < 2):
@@ -28,4 +31,4 @@ if __name__ == '__main__':
     
     denoise_pichu.save("clean_pichu.png")
    
-   
+
