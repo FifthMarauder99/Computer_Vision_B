@@ -370,7 +370,7 @@ if __name__ == '__main__':
         bounding_box = np.sort(bounding_box, order='y1')
 
         # Predict pitch on each bounding box
-        font = ImageFont.truetype("Arial", 14)
+        font = ImageFont.truetype("/Library/Fonts/DejaVuSans.ttf", 14)
         pitch_list = list(pitch_dict.items())
         ix = 0
         result = [] # Lists consists of tuple (row, col, height, width, pitch)
