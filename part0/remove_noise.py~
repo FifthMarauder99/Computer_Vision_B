@@ -17,6 +17,6 @@ if __name__ == '__main__':
     denoise_pichu = smooth_pichu.filter(ImageFilter.SMOOTH_MORE)
 
     
-    denoise_pichu.save("denoise_pichu.png")
+    denoise_pichu.save("clean_pichu.png")
    
    
