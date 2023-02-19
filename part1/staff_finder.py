@@ -24,13 +24,13 @@ def hough_transform(image):
     theta_step = np.pi/180
     accumulator = np.zeros((int(2 * dist_max // rho_step), int(180 // theta_step)))
     
-    # Looping over all edge points
+    # Looping over all edge points and possible angles in range of 80 to 180 degrees
     edge_points = edges.load()
     for x in range(width):
         for y in range(height):
             if edge_points[x, y] == 255:
 
-                # Looping over all possible angles in range of 80 to 180 degrees
+                 
                 for theta_index in range(80, 180, 24):
                     theta = (theta_index - 90) * theta_step
                     rho = x * np.cos(theta) + y * np.sin(theta)
