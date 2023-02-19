@@ -14,9 +14,9 @@ if __name__ == '__main__':
     min_pichu = noisy_pichu.filter(ImageFilter.MinFilter(size=3))
     median_pichu = min_pichu.filter(ImageFilter.MedianFilter(size=5))
     smooth_pichu = median_pichu.filter(ImageFilter.SMOOTH)
-    smooth_more_pichu = smooth_pichu.filter(ImageFilter.SMOOTH_MORE)
+    denoise_pichu = smooth_pichu.filter(ImageFilter.SMOOTH_MORE)
 
     
-    smooth_more_pichu.save("clean_pichu.png")
+    denoise_pichu.save("denoise_pichu.png")
    
    
