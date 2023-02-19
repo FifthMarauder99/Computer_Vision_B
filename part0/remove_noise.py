@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 from PIL import Image
 from PIL import ImageFilter
 from PIL import ImageEnhance
@@ -22,35 +22,3 @@ if __name__ == '__main__':
     denoise = denoise.filter(ImageFilter.MaxFilter(size=5))
     denoise = denoise.filter(ImageFilter.GaussianBlur(radius=2))
     denoise.save('denoise_pichu.png')
-=======
-# Title : Image processing in spatial and frequency space
-# Authors:
-#   Davyn Hartono - dbharton
-#   Atharva Pore - apore
-#   Sravya Vujjini - svujjin
-#   Sanjana Jairam - sjairam
-
-
-from PIL import Image
-from PIL import ImageFilter
-import sys
-
-
-if __name__ == '__main__':
-
-    if(len(sys.argv) < 2):
-        raise Exception("error: please give an input image name as a parameter, like this: \n"
-                        "python3 remove_noise.py noisy_pichu.png")
-    
-    # Load an image
-    noisy_pichu = Image.open(sys.argv[1])
-    min_pichu = noisy_pichu.filter(ImageFilter.MinFilter(size=3))
-    median_pichu = min_pichu.filter(ImageFilter.MedianFilter(size=5))
-    smooth_pichu = median_pichu.filter(ImageFilter.SMOOTH)
-    denoise_pichu = smooth_pichu.filter(ImageFilter.SMOOTH_MORE)
-
-    
-    denoise_pichu.save("denoise_pichu.png")
-   
-   
->>>>>>> updating files
