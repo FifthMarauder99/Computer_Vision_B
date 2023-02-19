@@ -1,3 +1,11 @@
+# Title : Optical Music Recognition
+# Authors:
+#   Davyn Hartono - dbharton
+#   Atharva Pore - apore
+#   Sravya Vujjini - svujjin
+#   Sanjana Jairam - sjairam
+
+
 import sys
 import numpy as np
 from PIL import Image, ImageDraw, ImageOps, ImageFont
