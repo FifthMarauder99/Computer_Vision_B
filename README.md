@@ -38,4 +38,3 @@ https://medium.com/@tomasz.kacmajor/hough-lines-transform-explained-645feda072ab
 https://www.youtube.com/watch?v=5zAT6yTHvP0 <br/>
 https://www.youtube.com/watch?v=XRBc_xkZREg <br/>
 https://www.cs.cmu.edu/~16385/s17/Slides/5.3_Hough_Transform.pdf <br/>
-https://coderzcolumn.com/tutorials/python/image-filtering-in-python-using-pillow <br/>
