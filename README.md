@@ -30,6 +30,13 @@ To detect the lines in the given image, we implemented hough transform
  
  - Correctly identifying the shape of the lines as the detected lines were overlapping with each other. 
 
+## Hough Transform :
+
+- We got the following image as the hough transform after the successful run of the program. 
+
+![image](files:/Users/atharvamaheshpore/Desktop/Screenshot 2023-02-19 at 6.48.56 PM) – 
+
+
 
 ### References Used :
 
