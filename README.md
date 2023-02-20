@@ -34,7 +34,7 @@ To detect the lines in the given image, we implemented hough transform
 
 - We got the following image as the hough transform after the successful run of the program. 
 
-![image](files:/Users/atharvamaheshpore/Desktop/Screenshot 2023-02-19 at 6.48.56 PM)
+![image](files:part1/Hough Transform.png)
 
 
 
