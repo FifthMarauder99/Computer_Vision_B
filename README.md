@@ -76,7 +76,9 @@ Given the music notes and image of three objects (filled note, quarter rest, and
 
 - Then, we convolve this new reference image through all the pixels in the image.
 
-- During the convolution, we apply correlation coefficient algorithm where it find the correlation value, ranging [-1, 1], between the reference image and the sub image.
+- During the convolution, we apply correlation coefficient algorithm where it find the correlation value, ranging [-1, 1], between the reference image and the sub image. The figure below is the formula to calculate the correlation coefficient. 'I' is sub image, while 'R' is reference image.
+
+
 - 
 - 
 
