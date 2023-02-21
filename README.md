@@ -93,3 +93,6 @@ In every iteration, we store the value in a matrix with the size of image. This 
 - The final program does not work well on noisy image. As we use binarization, there will be a bunch of black dots near the actual objects which disturbs the prediction. Hence, pre-processing image might be needed before binarizing input image.
 
 
+## Reference :
+- Some general workflow refers to https://medium.com/mlearning-ai/optical-music-recognition-6257a9bcca52
+- Correlaion coefficient, non maximum suppression algorithm, and accumulator algorithm for detecting line follows text book: _Burger & Burge, Principles of Digital Image Processing - Fundamental techniques_
