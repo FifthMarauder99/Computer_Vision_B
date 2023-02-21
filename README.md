@@ -72,6 +72,12 @@ Given the music notes and image of three objects (filled note, quarter rest, and
 
 - This gap also is used to determined the pitch of filled notes where the distance between pitch is half of the gap. As we do not consider '#'(sharp note symbol) and '♭' (flat note symbol) sign on music note which tells if notes should be played 1 or more pitch higher or lower, we determine the pitch label based on the regular note (without # and ♭). In this process, we create a dictionary that consists of the pitch coordinate as key and pitch label as value.
 
-- After preparing all those references, we start to detect the objects. Beforehand, we make adjustment to the reference image. Input images (music note) is not standardized where they come with different sizes. Hence, we need to rescale the reference image based on the detected staff gap. For filled notes, we use the reference image height the same as the staff gap, eight rest is twice of the gap, and quarter rest is thrice of the gap. During rescaling, we keep the width & heighr ratio the same. As an example, assuming that we have reference size 5x5 and wanting to rescale it such that the height is 8, 
+- After preparing all those references, we start to detect the objects. Beforehand, we make adjustment to the reference image. Input images (music note) is not standardized where they come with different sizes. Hence, we need to rescale the reference image based on the detected staff gap. For filled notes, we use the reference image height the same as the staff gap, eight rest is twice of the gap, and quarter rest is thrice of the gap. During rescaling, we keep the width & heighr ratio the same. As an example, assuming that we have reference size 5x5 and wanting to rescale it such that the height is 8. By keeping the ratio the same, in this case is 1, the new image will have size of 8x8.
+
+- Then, we convolve this new reference image through all the pixels in the image.
+
+- During the convolution, we apply correlation coefficient algorithm where it find the correlation value, ranging [-1, 1], between the reference image and the sub image.
+- 
+- 
 
 
