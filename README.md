@@ -78,8 +78,18 @@ Given the music notes and image of three objects (filled note, quarter rest, and
 
 - During the convolution, we apply correlation coefficient algorithm where it find the correlation value, ranging [-1, 1], between the reference image and the sub image. The figure below is the formula to calculate the correlation coefficient. 'I' is sub image, while 'R' is reference image.
 <img width="569" alt="Screenshot 2023-02-21 at 14 58 08" src="https://media.github.iu.edu/user/20652/files/2bb06ad0-cd84-4d84-aada-49bbf9e0b371">
+In every iteration, we store the value in a matrix with the size of image. This will gives us the advantage as the index of the matrix is the same as the coordinate of the detected object. By using threshold, we decide that an object is detected when the correlation is above or equal to 0.58.
 
-- 
-- 
+- Similar as detecting staves, we encountered the same problem where multiple detection. Hence, we implement the same non maximum suppression. However, instad of using 1D, we take 2D since we are considering both x and y axis. We check the neighbors' coefficient value which is located one pixels away before and after the checked pixels.
+
+- After finishing the object detection, we find the matrix indexes which value are not 0. Using the index and reference image's size, we get 2 coordinates which are upper left coordinate (x1,y1) and lower right coordinate (x2,y2). This information allows us to draw the bounding box for each detected object.
+
+- Finally, for filled node object, we predict the pitch label. Since we have 2 coordinates of bounding box, we utilizes the center coordinate of the bounding box (xc,yc), where xc = 0.5 * (x2-x1) and yc = 0.5 * (y2 - y1), and matching them to the dictionary that consists the information of pitch coordinates and pitch labels. 
+
+
+## Problem :
+- During staves detection, we tried to use hough transform. However, the result was not satisfactory as some lines are shifted which messed up the coordinate and the staff gap. Therefore, we using the simpler approach by scanning pixels horizontally on each row
+- This method gives much better result, but with a tradeoff. If staves in input image are slightly rotated (non perfectly horizontal) it will give false prediction
+- The final program does not work well on noisy image. As we use binarization, there will be a bunch of black dots near the actual objects which disturbs the prediction. Hence, pre-processing image might be needed before binarizing input image.
 
 
