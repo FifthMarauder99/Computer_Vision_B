@@ -19,8 +19,8 @@ if __name__ == '__main__':
         raise Exception("error: please give an input image name as a parameter, like this: \n"
                      "python3 omr.py music1.png")
 
-    # Binary image : replacing value above or equal to 127.5 with 255, otherwise 0
-    # 127.5 is chosen as it is the middle value on 0-255 pixel range
+    # Binary image : replacing value above or equal to 128 with 255, otherwise 0
+    # 128 is chosen as it is the middle value on 0-255 pixel range
     def binarize(image):
         """
         Binarizing image.
@@ -41,7 +41,7 @@ if __name__ == '__main__':
         for x in range(input_w):
             for y in range(input_h):
                 p = image.getpixel((x,y))
-                if p >= 127.5:
+                if p >= 128:
                     p = 255
                     image.putpixel((x,y), p)
                 else:
@@ -247,7 +247,7 @@ if __name__ == '__main__':
         :return: new 2D strongly correlated coefficient matrix.
         """
         # Add paddings for handling edge cases on correlation matrix.
-        C_pad = np.pad(C, 1)
+        C_pad = np.pad(C, 3)
         width, height = C_pad.shape
 
         # Get 3x3 array consists of neighbors and the checked value at the center of the array.
@@ -259,14 +259,14 @@ if __name__ == '__main__':
         suppressed_C = np.zeros((width, height))
 
         # Non Maxima Suppression
-        for i in range(1, width - 1):
-            for j in range(1, height - 1):
-                neighbor = np.copy(C_pad[i - 1:i + 2, j - 1:j + 2])
-                neighbor[1][1] = 0
+        for i in range(3, width - 3):
+            for j in range(3, height - 3):
+                neighbor = np.copy(C_pad[i - 3:i + 4, j - 3:j + 4])
+                neighbor[3][3] = 0
                 if C_pad[i, j] > np.amax(neighbor) * teta:
                     suppressed_C[i, j] = C_pad[i, j]
 
-        suppressed_C = suppressed_C[1:width - 1, 1:height - 1]
+        suppressed_C = suppressed_C[3:width - 3, 3:height - 3]
         return suppressed_C
 
 
@@ -403,7 +403,7 @@ if __name__ == '__main__':
     c_input = input.convert('RGB')
 
     # Finding staves lines
-    staves_pos = staves(input, input.width * 0.45)
+    staves_pos = staves(input, input.width * 0.45)  # Threshold for staves line : input.width * 0.45
 
     # Get the first row of each set of tone row
     first_row = tone_row_loc(staves_pos)
@@ -456,10 +456,10 @@ if __name__ == '__main__':
             note = np.array(note, dtype=dtype)
             note = np.sort(note, order=['row', 'col'])
             for row, col, height, width, pitch_label in note:
-                result_table.append([row, col, height, width, name, pitch_label, '-'])
+                result_table.append([row, col, height, width, name, pitch_label, '1'])
         else:
             for x1,y1,x2,y2 in bounding_box:
-                result_table.append(([x1,y1,y2-y1,x2-x1,name,'_','-']))
+                result_table.append(([x1,y1,y2-y1,x2-x1,name,'_','1']))
 
 
     # Saving image in the repository
