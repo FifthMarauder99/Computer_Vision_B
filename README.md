@@ -38,7 +38,7 @@ To detect the lines in the given image, we implemented hough transform
 
 
 
-### References Used :
+## References :
 
 https://www.youtube.com/watch?v=M43yXpp2qW8 <br/>
 https://medium.com/@tomasz.kacmajor/hough-lines-transform-explained-645feda072ab <br/>
@@ -49,16 +49,16 @@ https://www.cs.cmu.edu/~16385/s17/Slides/5.3_Hough_Transform.pdf <br/>
 
 # Part  2:  Optical Music Recognition
 
-## Statement:
+## Statement :
 
 Given the music notes and image of three objects (filled note, quarter rest, and eight rest), we are asked to detect those object and predict the pitch tone for each filled note.
 
-## Assumption:
+## Assumption :
 - Staff lines are assumed to be perfectly horizontal
 - Ignoring sharp note symbol & flat note symbol
 - We only detect 3 objects: filled note, quarter rest, and eight rest
 
-## Approach Explanation:
+## Approach Explanation :
 
 - Firstly, we binarize the input image by replacing each pixel's value with 0 if it is greater or equal to 127.5 and 0 otherwise. 127.5 is chosen as it is the middle value of the range [0,255].
 
@@ -87,12 +87,12 @@ In every iteration, we store the value in a matrix with the size of image. This 
 - Finally, for filled node object, we predict the pitch label. Since we have 2 coordinates of bounding box, we utilizes the center coordinate of the bounding box (xc,yc), where xc = 0.5 * (x2-x1) and yc = 0.5 * (y2 - y1), and matching them to the dictionary that consists the information of pitch coordinates and pitch labels. 
 
 
-## Problem :
+## Problem Faced :
 - During staves detection, we tried to use hough transform. However, the result was not satisfactory as some lines are shifted which messed up the coordinate and the staff gap. Therefore, we using the simpler approach by scanning pixels horizontally on each row
 - This method gives much better result, but with a tradeoff. If staves in input image are slightly rotated (non perfectly horizontal) it will give false prediction
 - The final program does not work well on noisy image. As we use binarization, there will be a bunch of black dots near the actual objects which disturbs the prediction. Hence, pre-processing image might be needed before binarizing input image.
 
 
-## Reference :
+## References :
 - Some general workflow refers to https://medium.com/mlearning-ai/optical-music-recognition-6257a9bcca52
 - Correlaion coefficient, non maximum suppression algorithm, and accumulator algorithm for detecting line follows text book: _Burger & Burge, Principles of Digital Image Processing - Fundamental techniques_
