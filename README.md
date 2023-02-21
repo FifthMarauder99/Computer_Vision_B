@@ -59,6 +59,6 @@ Given the music notes and image of three objects (filled note, quarter rest, and
 
 - Finding stave lines and their coordinate. In this step, we assume that stave lines are horizontal. Hence, the program will scan through image horizontally on each row. Since we are finding stave lines which are black pixels (value of 0), the program will give one point every time it finds 0 value. This point will be stored in accumulator to be aggregated. With some threshold, we decide that a row is considered to have a stave if the black pixels occupy 45% of the input image's width. After finding those lines, we record the row coordinates in which stave is detected.
 
-- For noisy image, we found that the previous step detected multiple line in a single stave. Therefore, we have to choose a single line that well represents a stave. We use 1D non maximum suppression algorithm to perform this task. 
+- For noisy image, we found that the previous step detected multiple line in a single stave. Therefore, we have to choose a single line that well represents a stave. We use 1D non maximum suppression algorithm to perform this task. 1D is because we only considers the y axis since staves are assumed to be horizontal, x axis is constant. This algorithm check an accumulator value to its neighbors, if that value is bigger then it will keep the value. However if it is lower, the value will be replaced with 0. To find how many neighbors should be checked, we use trial and error method and we found that 5
 
 
