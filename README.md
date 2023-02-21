@@ -53,6 +53,11 @@ https://www.cs.cmu.edu/~16385/s17/Slides/5.3_Hough_Transform.pdf <br/>
 
 Given the music notes and image of three objects (filled note, quarter rest, and eight rest), we are asked to detect those object and predict the pitch tone for each filled note.
 
+## Assumption:
+- Stave lines are assumed to be perfectly horizontal
+- Ignoring sharp note symbol & flat note symbol
+- We only detect 3 objects: filled note, quarter rest, and eight rest
+
 ## Approach Explanation:
 
 - Firstly, we binarize the input image by replacing each pixel's value with 0 if it is greater or equal to 127.5 and 0 otherwise. 127.5 is chosen as it is the middle value of the range [0,255].
@@ -65,6 +70,8 @@ Given the music notes and image of three objects (filled note, quarter rest, and
 
 - In the subsquent process, we determine the location of the first stave in each set of tone row / note row. To do so, we are using the representative gap to determine this first stave. We estimated that each tone row has distance not less than 3 times of the gap. Visually, they look like having the distance of 5 times or more of the gap, but we considered there might be some pitches in lower and high octave that rest outside the 5 stave lines.
 
-- This gap also is used to determined the pitch of filled notes where the distance between pitch is half of the gap. As we do not consider '#'(sharp note) and '♭' (flat note) sign on music note which tells if notes should be played 1 or more pitch higher or lower, we determine the pitch label based on the regular note (without # and ♭)
+- This gap also is used to determined the pitch of filled notes where the distance between pitch is half of the gap. As we do not consider '#'(sharp note symbol) and '♭' (flat note symbol) sign on music note which tells if notes should be played 1 or more pitch higher or lower, we determine the pitch label based on the regular note (without # and ♭).
+
+- After 
 
 
