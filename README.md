@@ -8,10 +8,8 @@ In this part, we try to remove noise from an image
 ## Approach Explanation :
 The simplest way to remove noise is by using gauissan filter. However, it will give blurry image which is considered not the best approach. Before implementing image processing, we try to understand what make the picture noisy.
 - First, we transform the noisy image into the spectrum space as the picture below.</br>
-![fft_noisy_pichu](https://media.github.iu.edu/user/20652/files/09fb10c5-f0e2-4fd7-acc6-6503b0b32d6e)
-</br>
-We found that there are some unusual white patterns shown in red and blue box which might be the cause of noise.</br>
-<img width="206" alt="Screenshot 2023-02-21 at 20 57 20" src="https://media.github.iu.edu/user/20652/files/35e025c7-855f-4e30-91d4-ec00b811e7cd">
+![fft_noisy_pichu](https://media.github.iu.edu/user/20652/files/09fb10c5-f0e2-4fd7-acc6-6503b0b32d6e)</br>
+Based on that image, we found that there are some unusual white patterns shown in red and blue box which might be the cause of noise. </br> <img width="206" alt="Screenshot 2023-02-21 at 20 57 20" src="https://media.github.iu.edu/user/20652/files/35e025c7-855f-4e30-91d4-ec00b811e7cd">
 
 - In spectrum space, filtering image can be done by multiplying input image to some matrix with the same size. Adopting this principle, we remove this pattern by multiplying their value with a value (teta) close to 0. The rest will be multiplied by 1, resulting in no changes on the spectrum value.
 
@@ -20,12 +18,13 @@ We found that there are some unusual white patterns shown in red and blue box wh
 - After multiplying the filter, we transform the resulting values back into spatial spectrum.
 
 ## Analysis & Problem :
-At first, we thought that noise patterns, shown both in blue and red squared, are the spectrum value of noise. However, we found that only the pattern in red square that form noise in the picture. This conclusion is drawn as we tried to remove the pattern in blue square, it does not change the image. The result of matrix multiplication in spectrum space is shown by the picture below.</br>
+At first, we thought that noise patterns, shown both in blue and red squared, are the spectrum value of noise. However, we found that only the pattern in red square causing noisy picture. This conclusion is drawn as we tried to remove the pattern in blue square, it does not remove image noise. The result of matrix multiplication in spectrum space is shown by the picture below.</br>
 ![fft_denoise_pichu](https://media.github.iu.edu/user/20652/files/14caf4eb-3c0f-4d89-bfa3-1d98010a50ad)</br>
 </br>
 Although this filter able to remove the diagonal noise on the input image, it produces shady image.</br>
 Below are the comparison of the original image and filtered image:</br>
-
+![noisy_pichu](https://media.github.iu.edu/user/20652/files/5b566245-902d-45e2-bb9c-d140182e354a)
+![denoise_pichu](https://media.github.iu.edu/user/20652/files/a6afacc0-c7f1-45d9-9fe9-7d34d0615cc0)
 
 
 ## Reference :
