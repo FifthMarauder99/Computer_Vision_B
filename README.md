@@ -11,7 +11,7 @@ The simplest way to remove noise is by using gauissan filter. However, it will g
 ![fft_noisy_pichu](https://media.github.iu.edu/user/20652/files/9dcb5b71-8655-4bb1-9e6f-0a550f8ed8d3)
 </br>
 We found that there are some white patterns shown in red and blue box.</br>
-![fft_noisy_pichu_annotated](https://media.github.iu.edu/user/20652/files/11883498-8673-4320-a5b1-dce8ee5d30f0)
+<img width="206" alt="Screenshot 2023-02-21 at 20 57 20" src="https://media.github.iu.edu/user/20652/files/35e025c7-855f-4e30-91d4-ec00b811e7cd">
 
 - 
 
