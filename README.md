@@ -8,12 +8,20 @@ In this part, we try to remove noise from an image
 ## Approach Explanation :
 The simplest way to remove noise is by using gauissan filter. However, it will give blurry image which is considered not the best approach. Before implementing image processing, we try to understand what make the picture noisy.
 - First, we transform the noisy image into the spectrum space as the picture below.</br>
-![fft_noisy_pichu](https://media.github.iu.edu/user/20652/files/9dcb5b71-8655-4bb1-9e6f-0a550f8ed8d3)
+![fft_noisy_pichu](https://media.github.iu.edu/user/20652/files/09fb10c5-f0e2-4fd7-acc6-6503b0b32d6e)
 </br>
-We found that there are some white patterns shown in red and blue box.</br>
+We found that there are some unusual white patterns shown in red and blue box which might be the cause of noise.</br>
 <img width="206" alt="Screenshot 2023-02-21 at 20 57 20" src="https://media.github.iu.edu/user/20652/files/35e025c7-855f-4e30-91d4-ec00b811e7cd">
 
-- 
+- In spectrum space, filtering image can be done by multiplying input image to some matrix with the same size. Adopting this principle, we remove this pattern by multiplying their value with a value (teta) close to 0. The rest will be multiplied by 1, resulting in no changes on the spectrum value.
+
+- Hence, we make a matrix with the same size of input image. This matrix will have 2 square-shaped dots with value of teta while the remainder will have value of 1. The distance and location of these squared dots can be adjusted such that it has the same location of the noise pattern.
+
+- After multiplying the filter, we transform the resulting values back into spatial spectrum.
+
+## Analysis & Problem :
+At first, we thought that noise patterns, shown both in blue and red squared, are the spectrum value of noise. However, we found that only the pattern in red square that form noise in the picture. This conclusion is drawn as we tried to remove the pattern in blue square, it does not change the image. The result of matrix multiplication in spectrum space is shown by the picture below.</br>
+
 
 ## Reference :
 https://github.com/imdeep2905/Notch-Filter-for-Image-Processing
