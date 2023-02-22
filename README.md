@@ -8,6 +8,7 @@ In this part, we try to remove noise from an image
 ## Approach Explanation :
 The simplest way to remove noise is by using gauissan filter. However, it will give blurry image which is considered not the best approach. Before implementing image processing, we try to understand what make the picture noisy.
 - First, we transform the noisy image into the spectrum space as the picture below.
+![fft_denoise_pichu](https://media.github.iu.edu/user/20652/files/d0d7a43e-5dc1-4732-a5a1-4f3539e967e0)
 We found that there are some white patterns shown in red and blue box.
 - 
 
