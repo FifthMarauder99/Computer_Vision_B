@@ -127,3 +127,9 @@ In every iteration, we store the value in a matrix with the size of image. This 
 ## References :
 - Some general workflow refers to https://medium.com/mlearning-ai/optical-music-recognition-6257a9bcca52
 - Correlaion coefficient, non maximum suppression algorithm, and accumulator algorithm for detecting line follows text book: _Burger & Burge, Principles of Digital Image Processing - Fundamental techniques_
+
+
+# Tasks Distribution:
+- Part0 is performed by all team members where each of us came up with different method to denoise image
+- Part1 is done by Atharva Pore (apore) & Sravya Vujjini (svujjin)
+- Part2 is done by Davyn Hartono (dbharton) & Sanjana Jairam (sajairam)
