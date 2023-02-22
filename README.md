@@ -15,12 +15,13 @@ We found that there are some unusual white patterns shown in red and blue box wh
 
 - In spectrum space, filtering image can be done by multiplying input image to some matrix with the same size. Adopting this principle, we remove this pattern by multiplying their value with a value (teta) close to 0. The rest will be multiplied by 1, resulting in no changes on the spectrum value.
 
-- Hence, we make a matrix with the same size of input image. This matrix will have 2 square-shaped dots with value of teta while the remainder will have value of 1. The distance and location of these squared dots can be adjusted such that it has the same location of the noise pattern.
+- Hence, we make a matrix with the same size of input image. This matrix will have 2 square-shaped dots with value of teta while the remainder will have value of 1. The distance and location of these squared dots can be adjusted such that it has the same location of the noise pattern. Based on trial and error, we decided to use teta = 0.1 
 
 - After multiplying the filter, we transform the resulting values back into spatial spectrum.
 
 ## Analysis & Problem :
 At first, we thought that noise patterns, shown both in blue and red squared, are the spectrum value of noise. However, we found that only the pattern in red square that form noise in the picture. This conclusion is drawn as we tried to remove the pattern in blue square, it does not change the image. The result of matrix multiplication in spectrum space is shown by the picture below.</br>
+![fft_denoise_pichu](https://media.github.iu.edu/user/20652/files/14caf4eb-3c0f-4d89-bfa3-1d98010a50ad)
 
 
 ## Reference :
