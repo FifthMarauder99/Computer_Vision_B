@@ -21,12 +21,14 @@ We found that there are some unusual white patterns shown in red and blue box wh
 
 ## Analysis & Problem :
 At first, we thought that noise patterns, shown both in blue and red squared, are the spectrum value of noise. However, we found that only the pattern in red square that form noise in the picture. This conclusion is drawn as we tried to remove the pattern in blue square, it does not change the image. The result of matrix multiplication in spectrum space is shown by the picture below.</br>
-![fft_denoise_pichu](https://media.github.iu.edu/user/20652/files/14caf4eb-3c0f-4d89-bfa3-1d98010a50ad)
+![fft_denoise_pichu](https://media.github.iu.edu/user/20652/files/14caf4eb-3c0f-4d89-bfa3-1d98010a50ad)</br>
+</br>
+Although this filter able to remove the diagonal noise on the input image, it produces shady image shown in the below.</br>
 
 
 ## Reference :
 https://github.com/imdeep2905/Notch-Filter-for-Image-Processing
-![fft_denoise_pichu](https://media.github.iu.edu/user/20652/files/038d4ca5-a5c0-41c3-9177-4a4751f22714)
+
 
 # Part  1:  Hough Transforms
 
