@@ -1,5 +1,16 @@
 # svujjin-apore-dbharton-sajairam-a1
 
+# Part  0:  Denoise Pichu
+
+## Statement : 
+In this part, we try to remove noise from an image
+
+## Approach Explanation :
+The simplest way to remove noise is by using gauissan filter. However, it will give blurry image which is considered not the best approach. Before implementing image processing, we try to understand what make the picture noisy.
+- First, we transform the noisy image into the spectrum space as the picture below.
+We found that there are some white patterns shown in red and blue box.
+- 
+
 # Part  1:  Hough Transforms
 
 ## Statement : 
