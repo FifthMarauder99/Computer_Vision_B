@@ -11,6 +11,10 @@ The simplest way to remove noise is by using gauissan filter. However, it will g
 We found that there are some white patterns shown in red and blue box.
 - 
 
+## Reference :
+https://github.com/imdeep2905/Notch-Filter-for-Image-Processing
+
+
 # Part  1:  Hough Transforms
 
 ## Statement : 
