@@ -8,14 +8,16 @@ In this part, we try to remove noise from an image
 ## Approach Explanation :
 The simplest way to remove noise is by using gauissan filter. However, it will give blurry image which is considered not the best approach. Before implementing image processing, we try to understand what make the picture noisy.
 - First, we transform the noisy image into the spectrum space as the picture below.</br>
+![fft_noisy_pichu](https://media.github.iu.edu/user/20652/files/9dcb5b71-8655-4bb1-9e6f-0a550f8ed8d3)
 </br>
-We found that there are some white patterns shown in red and blue box. </br>
+We found that there are some white patterns shown in red and blue box.</br>
+![fft_noisy_pichu_annotated](https://media.github.iu.edu/user/20652/files/11883498-8673-4320-a5b1-dce8ee5d30f0)
 
 - 
 
 ## Reference :
 https://github.com/imdeep2905/Notch-Filter-for-Image-Processing
-
+![fft_denoise_pichu](https://media.github.iu.edu/user/20652/files/038d4ca5-a5c0-41c3-9177-4a4751f22714)
 
 # Part  1:  Hough Transforms
 
